@@ -14,12 +14,16 @@ import { GUI } from "https://cdn.jsdelivr.net/npm/three@0.177.0/examples/jsm/lib
 import { OrbitControls } from "https://cdn.jsdelivr.net/npm/three@0.177.0/examples/jsm/controls/OrbitControls.js";
 import { TransformControls } from "https://cdn.jsdelivr.net/npm/three@0.177.0/examples/jsm/controls/TransformControls.js";
 
+// Stats.js (performance monitor)
+import Stats from "https://cdn.jsdelivr.net/npm/three@0.177.0/examples/jsm/libs/stats.module.js";
 
-let camera, scene, renderer, controls, updateCompute;
+let camera, scene, renderer, controls, updateCompute, container, stats;
 
 init();
 
 function init() {
+    container = document.createElement( 'div' );
+    document.body.appendChild( container );
 
     camera = new THREE.PerspectiveCamera( 25, window.innerWidth / window.innerHeight, 0.1, 100 );
     camera.position.set( 3, 5, 8 );
@@ -52,6 +56,11 @@ function init() {
     controls.maxDistance = 50;
 
     window.addEventListener( 'resize', onWindowResize );
+    
+    // Show fps, ping, etc
+    stats = new Stats();
+    document.body.appendChild(stats.dom);
+    stats.showPanel(0); // 0: fps, 1: ms, 2: mb
 
     // attractors
 
@@ -313,6 +322,7 @@ function init() {
         } );
 
     gui.add( { reset }, 'reset' );
+    
 
 }
 
@@ -331,5 +341,6 @@ async function animate() {
 
     renderer.compute( updateCompute );
     renderer.render( scene, camera );
+    stats.update();
 
 }
