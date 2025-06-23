@@ -1,9 +1,19 @@
-import * as THREE from 'three';
-import { float, If, PI, color, cos, instanceIndex, Loop, mix, mod, sin, instancedArray, Fn, uint, uniform, uniformArray, hash, vec3, vec4 } from 'three/tsl';
+// Three.js WebGPU build
+import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.177.0/build/three.webgpu.js";
 
-import { GUI } from 'three/addons/libs/lil-gui.module.min.js';
-import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
-import { TransformControls } from 'three/addons/controls/TransformControls.js';
+// Three.js Shader Language (TSL) utilities
+import {
+  float, If, PI, color, cos, instanceIndex, Loop, mix, mod,
+  sin, instancedArray, Fn, uint, uniform, uniformArray, hash, vec3, vec4
+} from "https://cdn.jsdelivr.net/npm/three@0.177.0/build/three.tsl.js";
+
+// lil-gui (GUI controls)
+import { GUI } from "https://cdn.jsdelivr.net/npm/three@0.177.0/examples/jsm/libs/lil-gui.module.min.js";
+
+// OrbitControls and TransformControls (Three.js examples)
+import { OrbitControls } from "https://cdn.jsdelivr.net/npm/three@0.177.0/examples/jsm/controls/OrbitControls.js";
+import { TransformControls } from "https://cdn.jsdelivr.net/npm/three@0.177.0/examples/jsm/controls/TransformControls.js";
+
 
 let camera, scene, renderer, controls, updateCompute;
 
