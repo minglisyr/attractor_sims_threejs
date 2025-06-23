@@ -134,9 +134,9 @@ function init() {
     const gravityConstant = 6.67e-11;
     const velocityDamping = uniform( 0.1 );
     const scale = uniform( 0.008 );
-    const boundHalfExtent = uniform( 8 );
-    const colorA = uniform( color( '#5900ff' ) );
-    const colorB = uniform( color( '#ffa575' ) );
+    const boundHalfExtent = uniform( 10 );
+    const colorA = uniform( color( '#ff00ff' ) );
+    const colorB = uniform( color( '#00ff00' ) );
 
     const positionBuffer = instancedArray( count, 'vec3' );
     const velocityBuffer = instancedArray( count, 'vec3' );
